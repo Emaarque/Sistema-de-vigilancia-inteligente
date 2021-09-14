@@ -1,6 +1,7 @@
 import  cv2
 import numpy as np
 from vidgear.gears import CamGear
+
 options = {"CAP_PROP_BUFFERSIZE": 0,
         'THREADED_QUEUE_MODE': False}
 
