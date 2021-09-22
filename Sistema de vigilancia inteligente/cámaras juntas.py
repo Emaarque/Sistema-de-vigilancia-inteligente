@@ -2,20 +2,21 @@
 from vidgear.gears import CamGear
 import cv2
 import numpy as np
+import time
 
+options = {"CAP_PROP_BUFFERSIZE": 0,
+        'THREADED_QUEUE_MODE': False}
 
-stream1 = CamGear(source='rtsp://contralor:Villegas555@100.100.34.179/cgi-bin/main.cgi').start() 
-stream2 = CamGear(source='rtsp://contralor:Villegas555@100.100.34.183/cgi-bin/main.cgi').start()
-stream3 = CamGear(source='rtsp://contralor:Villegas555@100.100.34.184/cgi-bin/main.cgi').start()
-stream4 = CamGear(source='rtsp://contralor:Villegas555@192.168.103.149/cgi-bin/main.cgi').start()
-stream5 = CamGear(source='rtsp://contralor:Villegas555@192.168.103.233/cgi-bin/main.cgi').start()
-stream6 = CamGear(source='rtsp://contralor:Villegas555@192.168.103.234/cgi-bin/main.cgi').start()
-stream7 = CamGear(source='rtsp://contralor:Villegas555@192.168.102.105/cgi-bin/main.cgi').start()
-stream8 = CamGear(source='rtsp://contralor:Villegas555@192.168.102.98/cgi-bin/main.cgi').start()
-
+stream1 = CamGear(source='rtsp://contralor:Villegas555@100.100.34.179/cgi-bin/main.cgi',**options).start() 
+stream2 = CamGear(source='rtsp://contralor:Villegas555@100.100.34.183/cgi-bin/main.cgi',**options).start()
+stream3 = CamGear(source='rtsp://contralor:Villegas555@100.100.34.184/cgi-bin/main.cgi',**options).start()
+stream4 = CamGear(source='rtsp://contralor:Villegas555@192.168.103.149/cgi-bin/main.cgi',**options).start()
+stream5 = CamGear(source='rtsp://contralor:Villegas555@192.168.103.233/cgi-bin/main.cgi',**options).start()
+stream6 = CamGear(source='rtsp://contralor:Villegas555@192.168.103.234/cgi-bin/main.cgi',**options).start()
+stream7 = CamGear(source='rtsp://contralor:Villegas555@192.168.102.105/cgi-bin/main.cgi',**options).start()
+stream8 = CamGear(source='rtsp://contralor:Villegas555@192.168.102.98/cgi-bin/main.cgi',**options).start()
 
 while True:
-
     frame1 = stream1.read()
     frame2= stream2.read()
     frame3= stream3.read()

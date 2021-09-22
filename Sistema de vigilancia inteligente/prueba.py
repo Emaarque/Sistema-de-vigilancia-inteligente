@@ -1,31 +1,11 @@
-
-#Librerias
-import time
-
-import cv2
-import numpy as np
-import torch
-from vidgear.gears import CamGear
-
-model= torch.hub.load('ultralytics/yolov5', 'yolov5l6')# modelo
-
-#configuración del modelo
-model.conf = 0.66#confidence threshold (0-1)
-model.classes= [0]# detección de personas
-options = {"CAP_PROP_BUFFERSIZE": 0,
-        'THREADED_QUEUE_MODE': False}
-cap= CamGear(source='rtsp://contralor:Villegas555@100.100.34.184/cgi-bin/main.cgi',logging=True,**options).start()
+import pywhatkit
 
 
-while(True):
-    frame=cap.read()
-    img= cv2.resize(frame ,(640,640))
-    result= model(img)
-    result.render()
-    labels = result.xyxyn[0][:, -1].numpy()
-    if (labels.all()==0):
-        print('pp')
-    cv2.imshow('camera', img)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        cap.stop()
-        break
+def alert(img):
+    date = datetime.now()
+    year_month = date.strftime('%Y-%m-%d,%H-%M-%S')
+
+pywhatkit.sendwhats_image(phone_no='+5492392537311',
+                        img_path='/home/ia1/cv/detect/2021-09-17,08-53-48.png',
+                        caption='hay una persona',
+                        tab_close=True)
